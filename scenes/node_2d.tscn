@@ -1,0 +1,397 @@
+[gd_scene format=3 uid="uid://dptspbygawri1"]
+
+[ext_resource type="Texture2D" uid="uid://lvrceys6k7wj" path="res://assets/space.jpg" id="1_3m5ht"]
+[ext_resource type="Script" uid="uid://tdbhxow1gj4i" path="res://scenes/player.gd" id="1_4dvvg"]
+[ext_resource type="Texture2D" uid="uid://d2ts2k8qf6slu" path="res://assets/paddle.png" id="1_6e84v"]
+[ext_resource type="Script" uid="uid://01yhakepkgga" path="res://scenes/node_2d.gd" id="1_08kqv"]
+[ext_resource type="Script" uid="uid://kdmeepw71cgl" path="res://scenes/bocha.gd" id="3_4vge2"]
+[ext_resource type="Texture2D" uid="uid://lcp33mtrpa66" path="res://assets/beachball.png" id="4_04qyp"]
+[ext_resource type="Script" uid="uid://b6jvc6b84vkci" path="res://scenes/bloquecitos.gd" id="5_j7wrs"]
+[ext_resource type="AudioStream" uid="uid://x1aavnnp20ej" path="res://assets/ball_sound.ogg" id="6_dubn7"]
+[ext_resource type="Texture2D" uid="uid://jb3pb3674agj" path="res://assets/pixel-brick.png" id="6_fws66"]
+[ext_resource type="Script" uid="uid://dxnoluududb7" path="res://scenes/area_2d.gd" id="7_fws66"]
+[ext_resource type="Script" uid="uid://2euh2kds2wdw" path="res://scenes/reintentar.gd" id="8_hh0fu"]
+[ext_resource type="AudioStream" uid="uid://dw7wj2e0tuvq6" path="res://assets/victorysound.mp3" id="12_f6ptj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e84v"]
+size = Vector2(256, 64)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4vge2"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vge2"]
+radius = 59.74
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_04qyp"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vge2"]
+size = Vector2(59.893093, 860.7211)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j7wrs"]
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fws66"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04qyp"]
+size = Vector2(59.893093, 1296.8254)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh0fu"]
+size = Vector2(194, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3m5ht"]
+size = Vector2(1200, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dubn7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.63529414, 0, 0.24313726, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Node2D" type="Node2D" unique_id=173465678]
+script = ExtResource("1_08kqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=421625498]
+position = Vector2(640, 360)
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("1_3m5ht")
+
+[node name="Jugador" type="CharacterBody2D" parent="." unique_id=196647907]
+position = Vector2(611, 656)
+motion_mode = 1
+up_direction = Vector2(0, 1)
+script = ExtResource("1_4dvvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador" unique_id=2101256865]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador" unique_id=693766505]
+shape = SubResource("RectangleShape2D_6e84v")
+
+[node name="Bocha" type="RigidBody2D" parent="." unique_id=682886619 groups=["Bocha"]]
+z_index = 1
+position = Vector2(436, 598)
+scale = Vector2(0.4, 0.4)
+physics_material_override = SubResource("PhysicsMaterial_4vge2")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("3_4vge2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bocha" unique_id=1528881860]
+position = Vector2(457.5, -42.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_04qyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bocha" unique_id=121757692]
+position = Vector2(457.5, -45)
+rotation = -6.143526
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_4vge2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bocha" unique_id=1284333541]
+stream = ExtResource("6_dubn7")
+
+[node name="Paredes" type="Node2D" parent="." unique_id=1253351409]
+
+[node name="Pared1" type="StaticBody2D" parent="Paredes" unique_id=1338984747]
+rotation = 0.98906654
+physics_material_override = SubResource("PhysicsMaterial_04qyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Pared1" unique_id=1150625455]
+position = Vector2(286.1141, 158.2394)
+rotation = 2.1404688
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_4vge2")
+
+[node name="Pared2" type="StaticBody2D" parent="Paredes" unique_id=997985894]
+position = Vector2(1242, -5.9999313)
+rotation = 0.99206954
+scale = Vector2(0.99999994, 0.99999994)
+physics_material_override = SubResource("PhysicsMaterial_j7wrs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Pared2" unique_id=297888380]
+position = Vector2(286.1141, 158.2394)
+rotation = 2.1404688
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_4vge2")
+
+[node name="Techo" type="StaticBody2D" parent="Paredes" unique_id=752959198]
+position = Vector2(1302.0001, -19.999939)
+rotation = 1.9841391
+scale = Vector2(0.9999999, 0.9999999)
+physics_material_override = SubResource("PhysicsMaterial_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Techo" unique_id=151610766]
+position = Vector2(249.51944, 593.7813)
+rotation = 2.73171
+shape = SubResource("RectangleShape2D_04qyp")
+
+[node name="Bloquecitos" type="Node2D" parent="." unique_id=721876575]
+
+[node name="Bloquecito" type="StaticBody2D" parent="Bloquecitos" unique_id=687557375 groups=["Bocha", "bloques"]]
+position = Vector2(148, 31.5)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito" unique_id=1066460154]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito" unique_id=748538681]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito2" type="StaticBody2D" parent="Bloquecitos" unique_id=1056171966 groups=["Bocha", "bloques"]]
+position = Vector2(342, 31)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito2" unique_id=835156344]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito2" unique_id=679892784]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito3" type="StaticBody2D" parent="Bloquecitos" unique_id=2073542074 groups=["Bocha", "bloques"]]
+position = Vector2(536, 31)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito3" unique_id=1974027577]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito3" unique_id=1988092301]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito4" type="StaticBody2D" parent="Bloquecitos" unique_id=1297438588 groups=["Bocha", "bloques"]]
+position = Vector2(730, 31)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito4" unique_id=1482546857]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito4" unique_id=1113752279]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito5" type="StaticBody2D" parent="Bloquecitos" unique_id=826889325 groups=["Bocha", "bloques"]]
+position = Vector2(924, 31)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito5" unique_id=656128670]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito5" unique_id=1222895534]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito6" type="StaticBody2D" parent="Bloquecitos" unique_id=697447208 groups=["Bocha", "bloques"]]
+position = Vector2(1118, 31)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito6" unique_id=2085864256]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito6" unique_id=305597514]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito7" type="StaticBody2D" parent="Bloquecitos" unique_id=815846819 groups=["Bocha", "bloques"]]
+position = Vector2(148, 94.5)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito7" unique_id=263634333]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito7" unique_id=1735012986]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito8" type="StaticBody2D" parent="Bloquecitos" unique_id=988954666 groups=["Bocha", "bloques"]]
+position = Vector2(342, 94)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito8" unique_id=467090539]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito8" unique_id=1187994661]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito9" type="StaticBody2D" parent="Bloquecitos" unique_id=473781704 groups=["Bocha", "bloques"]]
+position = Vector2(536, 94)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito9" unique_id=1782498207]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito9" unique_id=679884862]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito10" type="StaticBody2D" parent="Bloquecitos" unique_id=1191942179 groups=["Bocha", "bloques"]]
+position = Vector2(730, 94)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito10" unique_id=1794571155]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito10" unique_id=696254192]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito11" type="StaticBody2D" parent="Bloquecitos" unique_id=1542051981 groups=["Bocha", "bloques"]]
+position = Vector2(924, 94)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito11" unique_id=1739638515]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito11" unique_id=1217167655]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito12" type="StaticBody2D" parent="Bloquecitos" unique_id=1747818783 groups=["Bocha", "bloques"]]
+position = Vector2(1118, 94)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito12" unique_id=1997017130]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito12" unique_id=295939088]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito13" type="StaticBody2D" parent="Bloquecitos" unique_id=1925907929 groups=["Bocha", "bloques"]]
+position = Vector2(150, 157.5)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito13" unique_id=908215609]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito13" unique_id=270050781]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito14" type="StaticBody2D" parent="Bloquecitos" unique_id=1982874142 groups=["Bocha", "bloques"]]
+position = Vector2(344, 157)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito14" unique_id=1975534913]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito14" unique_id=1446416449]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito15" type="StaticBody2D" parent="Bloquecitos" unique_id=2056062956 groups=["Bocha", "bloques"]]
+position = Vector2(538, 157)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito15" unique_id=824668451]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito15" unique_id=1191719580]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito16" type="StaticBody2D" parent="Bloquecitos" unique_id=1642662999 groups=["Bocha", "bloques"]]
+position = Vector2(732, 157)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito16" unique_id=2057627242]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito16" unique_id=1111752446]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito17" type="StaticBody2D" parent="Bloquecitos" unique_id=694032317 groups=["Bocha", "bloques"]]
+position = Vector2(926, 157)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito17" unique_id=624382012]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito17" unique_id=1324889505]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Bloquecito18" type="StaticBody2D" parent="Bloquecitos" unique_id=396334025 groups=["Bocha", "bloques"]]
+position = Vector2(1120, 157)
+script = ExtResource("5_j7wrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloquecitos/Bloquecito18" unique_id=628640366]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloquecitos/Bloquecito18" unique_id=383902754]
+shape = SubResource("RectangleShape2D_hh0fu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1261714722]
+position = Vector2(0, 730)
+script = ExtResource("7_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=590892637]
+position = Vector2(654, 713)
+shape = SubResource("RectangleShape2D_3m5ht")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=227108731]
+process_mode = 3
+visible = false
+
+[node name="Reintentar" type="Button" parent="CanvasLayer" unique_id=402810597]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+offset_left = 566.0
+offset_top = 491.0
+offset_right = 657.0
+offset_bottom = 522.0
+theme_override_colors/font_outline_color = Color(0.6156863, 0, 0.14901961, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dubn7")
+text = "Reintentar"
+script = ExtResource("8_hh0fu")
+
+[node name="PanelGanaste" type="Panel" parent="CanvasLayer" unique_id=965028879]
+process_mode = 3
+visible = false
+offset_left = 345.0
+offset_top = 182.0
+offset_right = 385.0
+offset_bottom = 222.0
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelGanaste" unique_id=308403879]
+process_mode = 3
+layout_mode = 0
+offset_left = 266.0
+offset_top = 131.0
+offset_right = 343.0
+offset_bottom = 154.0
+text = "Ganaste!!!"
+
+[node name="Reintentar" type="Button" parent="CanvasLayer/PanelGanaste" unique_id=746490829]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 222.0
+offset_top = 306.0
+offset_right = 422.0
+offset_bottom = 356.0
+theme_override_colors/font_outline_color = Color(0.6156863, 0, 0.14901961, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dubn7")
+text = "Reintentar"
+script = ExtResource("8_hh0fu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1519367295]
+stream = ExtResource("12_f6ptj")
+
+[connection signal="body_shape_entered" from="Bocha" to="Bocha" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Reintentar" to="CanvasLayer/Reintentar" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelGanaste/Reintentar" to="CanvasLayer/PanelGanaste/Reintentar" method="_on_pressed"]
