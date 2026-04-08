@@ -134,6 +134,18 @@ position = Vector2(249.51944, 593.7813)
 rotation = 2.73171
 shape = SubResource("RectangleShape2D_04qyp")
 
+[node name="Techo2" type="StaticBody2D" parent="Paredes" unique_id=1746510259]
+position = Vector2(1285, 735.00006)
+rotation = 1.9841391
+scale = Vector2(0.9999999, 0.9999999)
+physics_material_override = SubResource("PhysicsMaterial_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Techo2" unique_id=588504773]
+position = Vector2(249.51944, 593.7813)
+rotation = 2.73171
+shape = SubResource("RectangleShape2D_04qyp")
+disabled = true
+
 [node name="Bloquecitos" type="Node2D" parent="." unique_id=721876575]
 
 [node name="Bloquecito" type="StaticBody2D" parent="Bloquecitos" unique_id=687557375 groups=["Bocha", "bloques"]]

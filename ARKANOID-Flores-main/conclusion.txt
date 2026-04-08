@@ -1,0 +1,10 @@
+Puntos a tener en cuenta:
+	- Mal uso de rigidbody y resolución de errores en respawn.
+	- Ni la pelota ni la paleta son escenas por separado, esto complica el reposicionamiento de la pelota al resetearla, sería mucho más fácil borrarla y crear una nueva en el lugar correcto.
+	- Al usar un rigidbody tenemos la posiblidad de hacer la colision de la paleta de alguna forma que nos permita apuntar, y no se está haciendo. Tampoco se apunta por la posición de la paleta donde la pelota colisiona como suele ser lo clásico en este juego.
+	- La pelota sale siempre en la misma dirección luego del reset a pesar de que se solucionó bien a la hora de iniciar la partida. No le copiaste a la única persona que tenés 100% permitido copiarle: vos mismo (entiendo que porque la parte donde lo hiciste bien la copiaste? porque es justo el copy paste que presetea el rigidbody).
+	+ Hay sonidos
+	+ Se usan señales para las colisiones
+
+
+Utilizar rigidbody sin saber en el primer proyecto es algo riesgoso, puede salir mal, salió mal. No pasa nada, muy bien que te hayas animado, pero muy mal que no hayas preguntado los problemas que te fueron surgiendo.

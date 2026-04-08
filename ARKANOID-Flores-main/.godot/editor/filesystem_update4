@@ -1,6 +1,5 @@
 res://scenes/node_2d.tscn
-res://scenes/menu.tscn
-res://scripts/bloquecitos.gd
-res://scripts/node_2d.gd
-res://scripts/area_2d.gd
 res://scripts/bocha.gd
+res://scripts/node_2d.gd
+res://conclusion.txt
+res://scenes/menu.tscn

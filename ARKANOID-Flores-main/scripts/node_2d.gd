@@ -34,6 +34,11 @@ func perder_vida():
 		$CanvasLayer/Reintentar.visible = true
 
 func reiniciar_bola():
+	#CORRECCION Cambiar la posición de un rigidbody a mano no logra nada, porque la simulación
+	# de físicas mantiene su posición y velocidad por su cuenta, por lo tanto en el siguiente
+	# frame se sobreescribe. En este caso eliminaría la bola y la instanciaría nuevamente.
+	# No coloco el ejemplo porque la bola no es una escena por separado, pero para instanciar
+	# una nueva sería así var bola:RigidBody2D = preload("res://path/to/bola_scene").instantiate()
 	bola.linear_velocity = Vector2.ZERO
 	bola.position = Vector2(436,598)
 	bola.linear_velocity = Vector2(250, -250)
